@@ -1,23 +1,41 @@
 
 
-function add(a,b) {
-    return a + b;
-};
+//function add(a,b) {
+//    return a + b;
+//};
+//
+//function substract(a,b) {
+//    return a - b;
+//};
+//
+//function division(a,b) {
+//    if (b === 0) {
+//        return "Not today";
+//    } else {
+//        return (a / b).toFixed(3);
+//    };
+//};
+//
+//function multiply(a,b) {
+//    return a * b;
+//};
 
-function substract(a,b) {
-    return a - b;
-};
-
-function division(a,b) {
-    if (b === 0) {
-        return "Not today";
-    } else {
-        return (a / b).toFixed(3);
+//Using switch to call a function or return each value
+function operate(a,b,operator) {
+    switch(operator) {
+        case("+"):
+            return a + b;
+        case("-"):
+            return a - b;
+        case("*"):
+            return a * b;
+        case("/"):
+            if (b === 0) {
+                return "Not today";
+            } else {
+                return (a / b).toFixed(3);
+            }
     };
-};
-
-function multiply(a,b) {
-    return a * b;
 };
 
 
