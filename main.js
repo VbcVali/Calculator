@@ -20,7 +20,7 @@
 //    return a * b;
 //};
 
-//Using switch to call a function or return each value
+//Using switch to return an operation based on the operator.
 function operate(a,b,operator) {
     switch(operator) {
         case("+"):
@@ -42,6 +42,9 @@ function operate(a,b,operator) {
 const test = document.querySelector(".buttons");
 const display = document.querySelector(".display");
 
+let arrayOfElements = [];
+
+
 test.addEventListener("click", (e) => {
     if (e.target.textContent === "AC") {
         display.textContent = "";
@@ -49,6 +52,7 @@ test.addEventListener("click", (e) => {
         let tester = document.createElement("div");
         tester.classList.add("tester");
         tester.textContent = e.target.textContent;
+        arrayOfElements.push(Number(tester.textContent));
         display.appendChild(tester);
     }
     
