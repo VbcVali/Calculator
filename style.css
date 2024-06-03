@@ -31,10 +31,12 @@ body {
     border-radius: 10%;
     justify-content: end;
     align-items: flex-end;
+    overflow: auto;
 }
 
 .display > div {
     color: white;
+    font-size: 70px;
 }
 
 .numbers {
@@ -55,7 +57,7 @@ button {
     font-size: larger;
 }
 
-.zero {
+#zero {
     width: 170px;
     border-radius: 45%
 }
@@ -69,8 +71,7 @@ button {
     color: white;
 }
 
-
-
-.tester {
-    color: white;
+button:hover {
+    transform: translateY(2px); /* Push the button down */
+    box-shadow: 0 3px #aaa; /* Reduce the shadow */
 }
