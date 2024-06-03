@@ -22,12 +22,14 @@ function operate(a,b,operator) {
 const buttons = document.querySelector(".buttons");
 const display = document.querySelector(".display");
 
+const negativePositive = document.querySelector(".negative").disabled = true;
+
 let value = {
     currentValue: [],
     storedValue: [],
     operator: "",
 };
-
+let result;
 
 buttons.addEventListener("click", (e) => {
     const clsName = e.target.className;
@@ -45,16 +47,29 @@ buttons.addEventListener("click", (e) => {
         display.appendChild(item);
     }
     else if (clsName == "operator") {
-        display.innerHTML = "";
-        value.operator = e.target.textContent;
-        value.storedValue = value.currentValue;
-        value.currentValue = [];
-        item.textContent = value.operator;
-        display.appendChild(item);
+        if (value.operator === "") {
+            display.innerHTML = "";
+            value.operator = e.target.textContent;
+            value.storedValue = value.currentValue;
+            value.currentValue = [];
+            item.textContent = value.operator;
+            display.appendChild(item);
+        }
+        else {
+            display.innerHTML = "";
+            result = operate(Number(value.storedValue.join("")), Number(value.currentValue.join("")), value.operator);
+            value.storedValue = [result];
+            value.operator = e.target.textContent;
+            value.currentValue = [];
+            item.textContent = result;
+            display.appendChild(item);
+        }
     }
     else if (clsName === "equal") {
         display.innerHTML = "";
-        let result = operate(Number(value.storedValue.join("")), Number(value.currentValue.join("")), value.operator);
+        result = operate(Number(value.storedValue.join("")), Number(value.currentValue.join("")), value.operator);
+        value.currentValue = [result];
+        value.storedValue = [];
         item.textContent = result;
         display.appendChild(item);
     }
