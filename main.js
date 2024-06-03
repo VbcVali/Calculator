@@ -13,6 +13,8 @@ function operate(a,b,operator) {
             } else {
                 return (a / b).toFixed(3);
             }
+        case("%"):
+            return a % b;
     };
 };
 
