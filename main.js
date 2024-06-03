@@ -23,6 +23,7 @@ const buttons = document.querySelector(".buttons");
 const display = document.querySelector(".display");
 
 const negativePositive = document.querySelector(".negative").disabled = true;
+const dot = document.querySelector("#dot");
 
 let value = {
     currentValue: [],
@@ -39,12 +40,16 @@ buttons.addEventListener("click", (e) => {
         value.currentValue = [];
         value.storedValue = [];
         value.operator = "";
+        dot.disabled = false;
     }
     else if (clsName === "number") {
         display.innerHTML = "";
         value.currentValue.push(e.target.textContent);
         item.textContent = value.currentValue.join("");
         display.appendChild(item);
+        if (value.currentValue.includes(".")) {
+            dot.disabled = true;
+        };
     }
     else if (clsName == "operator") {
         if (value.operator === "") {
@@ -52,6 +57,7 @@ buttons.addEventListener("click", (e) => {
             value.operator = e.target.textContent;
             value.storedValue = value.currentValue;
             value.currentValue = [];
+            dot.disabled = false;
             item.textContent = value.operator;
             display.appendChild(item);
         }
@@ -61,6 +67,7 @@ buttons.addEventListener("click", (e) => {
             value.storedValue = [result];
             value.operator = e.target.textContent;
             value.currentValue = [];
+            dot.disabled = false;
             item.textContent = result;
             display.appendChild(item);
         }
