@@ -33,7 +33,7 @@ body {
     align-items: flex-end;
 }
 
-.display > p {
+.display > div {
     color: white;
 }
 
