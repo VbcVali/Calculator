@@ -30,20 +30,30 @@ let value = {
 buttons.addEventListener("click", (e) => {
     const clsName = e.target.className;
     let item = document.createElement("div");
-    item.textContent = e.target.textContent;
-    display.appendChild(item);
-    if (clsName === "number") {
+    if (clsName === "clear") {
+        display.innerHTML = "";
+        value.currentValue = [];
+        value.storedValue = [];
+        value.operator = "";
+    }
+    else if (clsName === "number") {
+        display.innerHTML = "";
         value.currentValue.push(e.target.textContent);
+        item.textContent = value.currentValue.join("");
+        display.appendChild(item);
     }
     else if (clsName == "operator") {
+        display.innerHTML = "";
         value.operator = e.target.textContent;
         value.storedValue = value.currentValue;
         value.currentValue = [];
+        item.textContent = value.operator;
+        display.appendChild(item);
     }
     else if (clsName === "equal") {
-        console.log(value.storedValue.join)
-       let result = operate(Number(value.storedValue.join("")), Number(value.currentValue.join("")), value.operator);
-       console.log(result);
-    
+        display.innerHTML = "";
+        let result = operate(Number(value.storedValue.join("")), Number(value.currentValue.join("")), value.operator);
+        item.textContent = result;
+        display.appendChild(item);
     }
 });
